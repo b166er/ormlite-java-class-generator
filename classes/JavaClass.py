@@ -36,6 +36,9 @@ class JavaClass:
         INDENT = "    "
         IMPORT_FIELD = "import com.j256.ormlite.field.DatabaseField;\n"
         IMPORT_TABLE = "import com.j256.ormlite.table.DatabaseTable;\n"
+        IMPORT_TIME = "import java.time.LocalTime;\n"
+        IMPORT_DATE = "import java.time.LocalDate;\n"
+        IMPORT_DATETIME = "import java.time.LocalDateTime;\n"
         IMPORT_SERIALIZABLE = "import java.io.Serializable;\n\n"
         JAVA_CLASS_ANNOTATION = "@DatabaseTable(tableName = %sModel.TABLE_NAME_%s, daoClass = %sDao.class)\n"
         JAVA_CLASS = "public class %sModel implements Serializable {\n"
@@ -59,6 +62,9 @@ class JavaClass:
             file.write("package %s\n\n" % self.packageName)
             file.write(IMPORT_TABLE)
             file.write(IMPORT_FIELD)
+            file.write(IMPORT_TIME)
+            file.write(IMPORT_DATE)
+            file.write(IMPORT_DATETIME)
             file.write(IMPORT_SERIALIZABLE)
             file.write(JAVA_CLASS_ANNOTATION % (self.name, self.name.upper(),self.name))
             file.write(JAVA_CLASS % (self.name))

@@ -37,19 +37,19 @@ def getJavaType(sqliteType):
             return "Object"
             break;
         if case ("time"):
-            return "time"
+            return "LocalTime"
             break;
         if case ("timestamp"):
-            return "datetime"
+            return "LocalDateTime"
             break;
         if case ("datetime"):
-            return "datetime"
+            return "LocalDateTime"
             break;
         if case ("date"):
-            return "date"
+            return "LocalDate"
             break;
         if case ("enum"):
-            return "string"
+            return "String"
             break;
         raise Exception('SQL-Type not found: ' + sqliteType)
 

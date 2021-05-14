@@ -1,4 +1,4 @@
-import string
+import os
 from helpers.ClassCreationHelper import getJavaType
 
 class JavaClass: 
@@ -32,7 +32,7 @@ class JavaClass:
     def fields(self, value):
         self._fields = value 
 
-    def createJavaFile(self):
+    def createJavaFile(self, output_path: str):
         INDENT = "    "
         IMPORT_FIELD = "import com.j256.ormlite.field.DatabaseField;\n"
         IMPORT_TABLE = "import com.j256.ormlite.table.DatabaseTable;\n"
@@ -52,9 +52,8 @@ class JavaClass:
         SETTER = INDENT + "public void set%s(%s %s) { this.%s = %s; }\n\n"
 
 
-        fileName = self.name + "Model.java"
-
-        print "Processing file %s" % fileName        
+        fileName = os.path.join(output_path, self.name + "Model.java")
+        print("Processing file %s" % fileName)
 
         with open(fileName, 'w+') as file:
             file.write("package %s\n\n" % self.packageName)
